@@ -1,5 +1,5 @@
 <h2>Log in</h2>
-
+<main>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -24,3 +24,26 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+</main>
+<style type="text/css">
+  body{
+    background-color: #ff8000;
+    color: white;
+    padding-left: 15%;
+    padding-top: 5%;
+  }
+  main{
+    display: flex;
+    padding-left: 15%;
+    padding-top: 5%;
+    font-size: 15px;
+    flex-direction: column;
+    flex-align: center;
+    width:50%;
+    color: #ff8000;
+    height: auto;
+    background-color: white;
+
+  }
+</style>
+
