@@ -98,6 +98,9 @@
 		<th>
 			Is Paid
 		</th>
+		<th>
+			Payment Option
+		</th>
 		</tr>
 		
 		<%cd = Creditdetail.where(user_id: current_user)%>
@@ -123,6 +126,24 @@
 					<%else%>
 						No
 					<%end%>
+				</td>
+				<td>
+				<%if !f.isPaid && !f.requestStatus%>
+					Not Approved
+
+				<%elsif !f.isPaid && f.requestStatus%>
+						<form action="payment" method = post>
+						<input type="hidden" name="id" value="<%=f.id%>">
+						<input type="submit" value="pay">
+						</form>
+
+				<%elsif f.isPaid && f.requestStatus%>
+					Transaction Completed
+
+
+				<%end%>
+					
+					
 				</td>
 			</tr>
 			<br>

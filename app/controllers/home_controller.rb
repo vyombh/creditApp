@@ -5,16 +5,20 @@ class HomeController < ApplicationController
   def approval
 
   	id = params[:id]
-cd = Creditdetail.find_by_id(id);
-  	
-  	user = User.find_by_id(cd.user_id)
-  	if user.cl >= cd.amount
-  	user.cl = user.cl - cd.amount
+	cd = Creditdetail.find_by_id(id);
   	cd.requestStatus = 1
   	cd.save
-  	user.save
-  	end
   	
+  	return redirect_to '/'
+  end
+  	def payment
+  	id = params[:id]
+  	cd = Creditdetail.find_by_id(id)
+  	user = User.find_by_id(cd.user_id)
+  	user.cl = user.cl + cd.amount
+  	cd.isPaid = 1
+  	user.save
+  	cd.save
   	return redirect_to '/'
   end
 end

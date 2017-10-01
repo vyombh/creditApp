@@ -29,12 +29,13 @@ class CreditdetailsController < ApplicationController
 
     respond_to do |format|
       @creditdetail.user_id=current_user.id
-      if @creditdetail.save
-
+      if current_user.cl>=@creditdetail.amount&&@creditdetail.amount>0&&@creditdetail.save
+        current_user.cl = current_user.cl - @creditdetail.amount
+        current_user.save
         format.html { redirect_to '/', notice: 'Creditdetail was successfully created.' }
         format.json { render :show, status: :created, location: @creditdetail }
       else
-        format.html { render :new }
+        format.html { redirect_to '/' }
         format.json { render json: @creditdetail.errors, status: :unprocessable_entity }
       end
     end
