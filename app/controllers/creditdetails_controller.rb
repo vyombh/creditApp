@@ -15,6 +15,7 @@ class CreditdetailsController < ApplicationController
   # GET /creditdetails/new
   def new
     @creditdetail = Creditdetail.new
+    @creditdetail.user_id=current_user.id
   end
 
   # GET /creditdetails/1/edit
@@ -27,8 +28,10 @@ class CreditdetailsController < ApplicationController
     @creditdetail = Creditdetail.new(creditdetail_params)
 
     respond_to do |format|
+      @creditdetail.user_id=current_user.id
       if @creditdetail.save
-        format.html { redirect_to @creditdetail, notice: 'Creditdetail was successfully created.' }
+
+        format.html { redirect_to '/', notice: 'Creditdetail was successfully created.' }
         format.json { render :show, status: :created, location: @creditdetail }
       else
         format.html { render :new }
@@ -69,6 +72,6 @@ class CreditdetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def creditdetail_params
-      params.require(:creditdetail).permit(:amount, :repaidAmount, :isPaid, :requestStatus)
+      params.require(:creditdetail).permit(:amount, :repaidAmount, :isPaid, :requestStatus,:user_id)
     end
 end

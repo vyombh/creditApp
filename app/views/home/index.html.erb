@@ -1,3 +1,126 @@
+<% if current_user.role == 1%>
+	<table>
+		<tr>
+		<th>
+			Users requests
+		</th>
+		</tr>
+		<tr>
+		<th >
+			E-mail
+		</th>
+		<th>
+			Request Amt.
+		</th>
+		<th>
+			Request Status
+		</th>
+		<th>
+			Paid Amt.
+		</th>
+		</tr>
+		
+		<%cd = Creditdetail.all%>
+		<% cd.each do |f|%>
+			<tr>
+				<% user = User.find_by_id(f.user_id)%>
+				<th >
+					<%=user.email%>
+				</th>
+				<th>
+					<%=f.amount%>
+				</th>
+				<th>
+					<% if f.requestStatus%>
+						approved
+						<%else%>
+						pending
+						<%end%>
+				</th>
+				<th>
+					<%=f.repaidAmount%>
+				</th>
+			</tr>
+			<br>
+
+
+		<%end%>
+
+	</table>
+
+
+
+<%else%>
+<h3>BALANCE AMOUNT: <%=current_user.cl%></h3>
+<%@creditdetail = Creditdetail.new%>
+
+<%= form_for @creditdetail do |f| %>
+
+	  <div class="field">
+	    <%= f.label :amount %><br>
+	    <%= f.number_field :amount %>
+	  </div>
+	 
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
+	<% end %>
+
+	<table>
+		<tr>
+		<th>
+			Your requests
+		</th>
+		</tr>
+		<tr>
+		<th>
+			Request Amt.
+		</th>
+		<th>
+			Request Status
+		</th>
+		<th>
+			Paid Amt.
+		</th>
+		<th>
+			Is Paid
+		</th>
+		</tr>
+		
+		<%cd = Creditdetail.where(user_id: current_user)%>
+		<% cd.each do |f|%>
+			<tr>
+				<% user = User.find_by_id(f.user_id)%>
+				<td>
+					<%=f.amount%>
+				</td>
+				<td>
+					<% if f.requestStatus%>
+						approved
+						<%else%>
+						pending
+						<%end%>
+				</td>
+				<td>
+					<%=f.repaidAmount%>
+				</td>
+				<td>
+					<%if f.isPaid%>
+						Yes
+					<%else%>
+						No
+					<%end%>
+				</td>
+			</tr>
+			<br>
+
+
+		<%end%>
+
+	</table>
+
+
+<%end%>
 
 <style type="text/css">
   body{
