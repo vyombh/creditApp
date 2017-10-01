@@ -16,6 +16,7 @@ class HomeController < ApplicationController
   	cd = Creditdetail.find_by_id(id)
   	user = User.find_by_id(cd.user_id)
   	user.cl = user.cl + cd.amount
+  	cd.repaidAmount = cd.amount
   	cd.isPaid = 1
   	user.save
   	cd.save

@@ -1,7 +1,7 @@
 <% if current_user.role == 1%>
 	<table>
 		<tr>
-		<th>
+		<th colspan = "6" >
 			Users requests
 		</th>
 		</tr>
@@ -14,6 +14,9 @@
 		</th>
 		<th>
 			Request Status
+		</th>
+		<th>
+			Balance
 		</th>
 		<th>
 			Paid Amt.
@@ -35,10 +38,13 @@
 				</td>
 				<td>
 					<% if f.requestStatus%>
-						approved
+						<font color="green">Approved</font>
 						<%else%>
-						pending
+						<font color="#ff8000">pending</font>
 						<%end%>
+				</td>
+				<td>
+					<%=user.cl%>
 				</td>
 				<td>
 					<%=f.repaidAmount%>
@@ -50,6 +56,8 @@
 						<input type="submit" value="approval">
 
 						</form>
+						<%else%>
+						<font color="green">Approved</font>
 					<%end%>
 
 				</td>
@@ -81,7 +89,7 @@
 
 	<table>
 		<tr>
-		<th>
+		<th colspan = "6" >
 			Your requests
 		</th>
 		</tr>
@@ -112,9 +120,9 @@
 				</td>
 				<td>
 					<% if f.requestStatus%>
-						approved
+						<font color="green">approved</font>
 						<%else%>
-						pending
+						<font color="#ff8000">pending</font>
 						<%end%>
 				</td>
 				<td>
@@ -122,14 +130,14 @@
 				</td>
 				<td>
 					<%if f.isPaid%>
-						Yes
+						<font color="green">Yes</font>
 					<%else%>
-						No
+						<font color="red">No</font>
 					<%end%>
 				</td>
 				<td>
 				<%if !f.isPaid && !f.requestStatus%>
-					Not Approved
+					<font color="red">Not Approved</font>
 
 				<%elsif !f.isPaid && f.requestStatus%>
 						<form action="payment" method = post>
@@ -138,7 +146,7 @@
 						</form>
 
 				<%elsif f.isPaid && f.requestStatus%>
-					Transaction Completed
+					<font color="green">Transaction Completed</font>
 
 
 				<%end%>
@@ -162,16 +170,5 @@
     color: white;
     
   }
-  main{
-    display: flex;
-    
-    font-size: 15px;
-    flex-direction: column;
-    flex-align: center;
-    width:50%;
-    color: #cc0001;
-    height: auto;
-    background-color: white;
-
-  }
+ 
 </style>
