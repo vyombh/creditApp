@@ -18,28 +18,41 @@
 		<th>
 			Paid Amt.
 		</th>
+		<th>
+			Approve
+		</th>
 		</tr>
 		
 		<%cd = Creditdetail.all%>
 		<% cd.each do |f|%>
 			<tr>
 				<% user = User.find_by_id(f.user_id)%>
-				<th >
+				<td >
 					<%=user.email%>
-				</th>
-				<th>
+				</td>
+				<td>
 					<%=f.amount%>
-				</th>
-				<th>
+				</td>
+				<td>
 					<% if f.requestStatus%>
 						approved
 						<%else%>
 						pending
 						<%end%>
-				</th>
-				<th>
+				</td>
+				<td>
 					<%=f.repaidAmount%>
-				</th>
+				</td>
+				<td>
+					<%if !f.requestStatus%>
+						<form action="approval" method = post>
+						<input type="hidden" name="id" value="<%=f.id%>">
+						<input type="submit" value="approval">
+
+						</form>
+					<%end%>
+
+				</td>
 			</tr>
 			<br>
 
