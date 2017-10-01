@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :creditdetails
   get 'home/index'
   root 'home#index'
 

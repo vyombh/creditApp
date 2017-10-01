@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Creditdetails</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Repaidamount</th>
+      <th>Ispaid</th>
+      <th>Requeststatus</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @creditdetails.each do |creditdetail| %>
+      <tr>
+        <td><%= creditdetail.amount %></td>
+        <td><%= creditdetail.repaidAmount %></td>
+        <td><%= creditdetail.isPaid %></td>
+        <td><%= creditdetail.requestStatus %></td>
+        <td><%= link_to 'Show', creditdetail %></td>
+        <td><%= link_to 'Edit', edit_creditdetail_path(creditdetail) %></td>
+        <td><%= link_to 'Destroy', creditdetail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Creditdetail', new_creditdetail_path %>

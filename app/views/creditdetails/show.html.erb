@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @creditdetail.amount %>
+</p>
+
+<p>
+  <strong>Repaidamount:</strong>
+  <%= @creditdetail.repaidAmount %>
+</p>
+
+<p>
+  <strong>Ispaid:</strong>
+  <%= @creditdetail.isPaid %>
+</p>
+
+<p>
+  <strong>Requeststatus:</strong>
+  <%= @creditdetail.requestStatus %>
+</p>
+
+<%= link_to 'Edit', edit_creditdetail_path(@creditdetail) %> |
+<%= link_to 'Back', creditdetails_path %>

@@ -1,0 +1,33 @@
+<%= form_for(@creditdetail) do |f| %>
+  <% if @creditdetail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@creditdetail.errors.count, "error") %> prohibited this creditdetail from being saved:</h2>
+
+      <ul>
+      <% @creditdetail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.number_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :repaidAmount %><br>
+    <%= f.number_field :repaidAmount %>
+  </div>
+  <div class="field">
+    <%= f.label :isPaid %><br>
+    <%= f.check_box :isPaid %>
+  </div>
+  <div class="field">
+    <%= f.label :requestStatus %><br>
+    <%= f.check_box :requestStatus %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
