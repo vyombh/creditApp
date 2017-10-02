@@ -10,20 +10,32 @@
 header{
 	background-color: white;
 	color: black;
+	display:flex;
+	height:52px;
+	justify-content: space-between;
 	border-bottom: 2px solid black;
+
 	font-size: 25px;
+	div.logo{
+	display:inline-block;
+		img{
+			width:40%;
+			height:auto;
+		}
+	}
 	div{
-	display: flex;
-	justify-content:flex-end;
+	display: inline-block;
+	width:15%;
 	padding: 1% 2% 1% 2%;
 		nav{
-		width:20%;
-
 			ul{
-				display: flex;
+				display:flex;
 				justify-content: space-between;
+				margin-right: 2%;
+				align-item:center;
 				text-align:center;
 				li{
+
 					list-style: none;
 
 				}
@@ -34,22 +46,59 @@ header{
  h3,form{
  	margin: 1% 15%;
  }
+
+ main{
+ 	background-color: white;
+ 	color: #cc0001;
+ 	width:60%;
+ 	margin:2% 15%;
+ 	padding:2% 0%;
+ 	font-size: 15px;
+ 	form#new_creditdetail.new_creditdetail{
+ 		div.actions{
+ 			input{
+ 				padding: 2%;
+		 		background-color: #cc0001;
+		 		color: white;
+		 		border: 1px solid #cc0002;
+		 		border-radius: 5%;
+		 		font-size:16px;
+ 			}
+ 		}
+ 		div.field{
+ 			input#creditdetail_amount{
+ 			padding: 1% 2%;
+ 			}
+ 		}
+ 	}
+
+ }
 table{
  		background-color:white;
- 		color:black;
+ 		color: #cc0001;
  		padding: 1% 2% 1% 2%;
  		margin: 0% 15%;
- 		border: 5px solid black;
+ 		border: 1px solid black;
 	tr{
 		padding-right:1%;
 
 		th{
-		
 			padding: 1% .5%;
 		}
 
 		td{
+			text-align: center;
+			color: black;
 			padding: 1% .5%;
+			form{
+				input{
+					padding: 5%;
+			 		color: black;
+			 		border: 1px solid black;
+			 		border-radius: 10%;
+
+				}
+			}
 		}
 	}
 
