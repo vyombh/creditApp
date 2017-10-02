@@ -87,7 +87,15 @@
 	  <div class="actions">
 	    <%= f.submit :Create_Credentials%>
 	  </div>
-	<% end %>
+
+<% end %>
+	<% if @creditdetail.errors.any? %>
+        		<% @creditdetail.errors.full_messages.each do |message| %>
+   				<script type="text/javascript">
+				noty({text: '<%= message %>', type: 'error'},timeout:2000);
+				</script>
+     		<% end %>
+ 	<% end %>
 	<table>
 		<tr>
 		<th colspan = "6" >

@@ -29,13 +29,20 @@ class CreditdetailsController < ApplicationController
 
     respond_to do |format|
       @creditdetail.user_id=current_user.id
-      if current_user.cl>=@creditdetail.amount&&@creditdetail.amount>0&&@creditdetail.save
+      if @creditdetail.amount!=nil&&current_user.cl>=@creditdetail.amount&&@creditdetail.amount>0&&@creditdetail.save
         current_user.cl = current_user.cl - @creditdetail.amount
         current_user.save
-        format.html { redirect_to '/', notice: 'Creditdetail was successfully created.' }
+        format.html { redirect_to '/', notice: 'Credit request was successfully created.' }
         format.json { render :show, status: :created, location: @creditdetail }
       else
-        format.html { redirect_to '/' }
+        if @creditdetail.amount==nil
+        format.html { redirect_to '/', alert: 'Plz specify the amount' }
+      elsif @creditdetail.amount <= 0
+        format.html { redirect_to '/', alert: 'Plz enter amount greater than zero' }
+      else
+        format.html { redirect_to '/', alert: 'Out of Your credit limit' }
+      end
+          
         format.json { render json: @creditdetail.errors, status: :unprocessable_entity }
       end
     end

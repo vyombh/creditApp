@@ -9,7 +9,7 @@ class HomeController < ApplicationController
   	cd.requestStatus = 1
   	cd.save
   	
-  	return redirect_to '/'
+  	return redirect_to '/',success: 'credit request accepted'
   end
   	def payment
   	id = params[:id]
@@ -20,7 +20,7 @@ class HomeController < ApplicationController
   	cd.isPaid = 1
   	user.save
   	cd.save
-  	return redirect_to '/'
+  	return redirect_to '/',success: 'payment successfully done'
   end
 end
 

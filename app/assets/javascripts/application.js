@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.noty.packaged.min.js
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
